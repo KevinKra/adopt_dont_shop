@@ -25,6 +25,10 @@ RSpec.describe "As a visitor" do
       expect(current_path).to eq("/shelters/new")
 
       fill_in "Name", with: "DogsForRent"
+      fill_in "Address", with: "123 WoofWood Rd"
+      fill_in "City", with: "Dallas"
+      fill_in "State", with: "Texas"
+      fill_in "Zip", with: "55414"
       click_on "Create Shelter"
 
       expect(current_path).to eq("/shelters")

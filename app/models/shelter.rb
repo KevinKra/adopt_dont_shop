@@ -1,7 +1,7 @@
 class Shelter < ApplicationRecord
   has_many :animals
 
-  validates_presence_of :name
+  validates_presence_of :name, :city, :state, :zip, :address
 
   def self.shelter_count
     Shelter.count
