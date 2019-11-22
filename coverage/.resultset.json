@@ -227,6 +227,29 @@
         1,
         null,
         null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        null,
         null
       ],
       "/Users/kevinkrato/Desktop/Turing/BACKEND/MOD_2/adopt_dont_shop/app/models/shelter.rb": [
@@ -238,9 +261,17 @@
         1,
         1,
         null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        2,
+        null,
         null
       ]
     },
-    "timestamp": 1574383265
+    "timestamp": 1574385819
   }
 }
