@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  root "pages#home"
-  get "shelters", to: "pages#shelters"
+  get "/shelters", to: "shelters#index"
+  get "/shelters/:id", to: "shelters#show"
 end
