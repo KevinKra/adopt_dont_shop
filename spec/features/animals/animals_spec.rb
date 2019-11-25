@@ -20,4 +20,16 @@ RSpec.describe "As a visitor" do
       expect(page).to have_content(@pet_1.shelter.name)
     end
   end
+
+  describe "I visit a unique pets page" do
+    it "then I see all the data related to that particular pet" do
+      visit "/pets/#{@pet_1.id}"
+      expect(page).to have_content(@pet_1.name)
+      expect(page).to have_content(@pet_1.age)
+      expect(page).to have_content(@pet_1.image)
+      expect(page).to have_content(@pet_1.description)
+      expect(page).to have_content(@pet_1.sex)
+      expect(page).to have_content(@pet_1.adopted)
+    end
+  end
 end

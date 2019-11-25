@@ -72,4 +72,15 @@ RSpec.describe "As a visitor" do
       expect(Shelter.shelter_count).to eq(1)
     end
   end
+
+  describe "I visit the shelter's pet page" do
+    it "will show all the shelter's pets" do
+      visit "/shelters/#{@shelter_1.id}/pets"
+      expect(page).to have_content(@pet_1.name)
+      expect(page).to have_content(@pet_1.image)
+      expect(page).to have_content(@pet_1.age)
+      expect(page).to have_content(@pet_1.sex)
+      expect(page).to_not have_content(@pet_3.name)
+    end
+  end
 end
