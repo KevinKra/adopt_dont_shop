@@ -15,6 +15,11 @@ class SheltersController < ApplicationController
     show
   end
 
+  def pets 
+    show
+    @shelter_pets = Animal.where(shelter_id: @shelter.id)
+  end
+
   def patch
     show
     @shelter.update(
