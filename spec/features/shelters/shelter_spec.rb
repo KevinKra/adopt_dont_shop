@@ -4,8 +4,9 @@ RSpec.describe "As a visitor" do
   before(:each) do
     @shelter_1 = Shelter.create(name: "RoofsPark", address: "555 Doggo Lane", city: "Denver", state: "Colorado", zip: "55455")
     @shelter_2 = Shelter.create(name: "DoogStoor", address: "123 Capital St", city: "Aurora", state: "Colorado", zip: "31331")
-    @animal_1 = Animal.create(name: "Wilson", age: 5, adopted: false, shelter_id: @shelter_1.id)
-    @animal_2 = Animal.create(name: "Tychus", age: 7, adopted: false, shelter: @shelter_1)
+    @pet_1 = Animal.create!(name: "Wilson", age: 5, adopted: false, sex: "male", description: "Tall and fluffy", image: "abc", shelter_id: @shelter_1.id)
+    @pet_2 = Animal.create!(name: "Tychus", age: 7, adopted: false, sex: "female", description: "Fat and hairless", image: "efg", shelter: @shelter_1)
+    @pet_3 = @shelter_2.animals.create!(name: "Orson", age: 13, adopted: false, sex: "female", description: "Thin and Poofy", image: "cde")
   end
 
   describe "I visit a shelter's show page" do
