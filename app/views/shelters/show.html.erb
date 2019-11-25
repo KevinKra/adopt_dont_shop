@@ -1,2 +1,10 @@
 <h2><%= @shelter.name %></h2>
 <p>Address: <%= @shelter.address %></p>
+<p>City: <%= @shelter.city %>
+<p>State: <%= @shelter.state %>
+<p>Zip Code: <%= @shelter.zip %>
+
+<h4>Edit this shelter</h4>
+
+<%= link_to "Edit", "#{@shelter.id}/edit" %>
+<%= link_to "Delete", "#{@shelter.id}/delete" %>
