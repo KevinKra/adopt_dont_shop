@@ -61,5 +61,14 @@ RSpec.describe "As a visitor" do
       expect(page).to have_content("NewState")
       expect(page).to have_content(123123)
     end
+
+    it "I can delete the previously matched shelter" do
+      visit "/shelters/#{@shelter_1.id}"
+      expect(Shelter.shelter_count).to eq(2)
+      expect(current_path).to eq("/shelters/#{@shelter_1.id}")
+      click_link "Delete"
+      expect(current_path).to eq("/shelters")
+      expect(Shelter.shelter_count).to eq(1)
+    end
   end
 end
