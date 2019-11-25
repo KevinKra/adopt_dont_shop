@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   get "/shelters/:id", to: "shelters#show"
   get "/shelters/:id/edit", to: "shelters#edit"
   patch "/shelters/:id", to: "shelters#patch"
+  # correct the delete path
+  get "/shelters/:id/delete", to: "shelters#delete"
 end
