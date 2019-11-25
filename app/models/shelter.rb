@@ -1,5 +1,5 @@
 class Shelter < ApplicationRecord
-  has_many :animals
+  has_many :animals, dependent: :destroy
 
   validates_presence_of :name, :city, :state, :zip, :address
 
