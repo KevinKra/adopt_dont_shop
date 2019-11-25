@@ -11,6 +11,22 @@ class SheltersController < ApplicationController
     redirect_to "/shelters"
   end
 
+  def edit
+    show
+  end
+
+  def patch
+    show
+    @shelter.update(
+                    name: params[:name], 
+                    address: params[:address],
+                    city: params[:city],
+                    state: params[:state],
+                    zip: params[:zip]
+                  )
+    redirect_to "/shelters/#{@shelter.id}"
+  end
+
   def show
     @shelter = Shelter.find(params[:id])
   end
