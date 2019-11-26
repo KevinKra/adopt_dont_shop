@@ -1,13 +1,17 @@
-<h2>Shelter Pets Page</h2>
-
-<% @shelter_pets.each do |pet| %>
-  <article class="pet-info">
-    <h3><%= pet.image %></h3>
-    <h3><%= pet.name %></h3>
-    <h3><%= pet.age %></h3>
-    <h3><%= pet.sex %></h3>
-    <%= link_to 'Edit', "/pets/#{pet.id}/edit"%>
-  </article>
-<% end %>
-
-<%= link_to 'New Pet', "/shelters/#{@shelter.id}/pets/new" %>
+<body class="page-template-1">
+  <h1>Shelter Pets Page</h1>
+  
+  <%= link_to 'New Pet', "/shelters/#{@shelter.id}/pets/new" %>
+  <% @shelter_pets.each do |pet| %>
+    <article class="card-template-1">
+      <h2><%= pet.name %></h2>
+    <ul class="unordered-list">
+      <li>Image: <%= pet.image %></li>
+      <li>Age: <%= pet.age %></li>
+      <li>Sex: <%= pet.sex %></li>
+      <li>Adopted: <%= pet.adopted %></li>
+    </ul>
+      <%= link_to 'Edit', "/pets/#{pet.id}/edit", class: "link-btn"%>
+    </article>
+  <% end %>
+</body>

@@ -1,7 +1,20 @@
-<h1>Pet Page</h1>
-<p>Name: <%= @pet.name %></p>
-<p>Age: <%= @pet.age %></p>
-<p>Description: <%= @pet.description %></p>
-<p>Image: <%= @pet.image %></p>
-<p>Sex: <%= @pet.sex %></p>
-<p>Adopted: <%= @pet.adopted %></p>
+<body class="page-template-1">
+  <h1>Pet Overview</h1>
+  <section class="card-template-1">
+    <h2><%= @pet.name %></h2>
+    <ul>
+      <li>Age: <%= @pet.age %></li>
+      <li>Description: <%= @pet.description %></li>
+      <li>Image: <%= @pet.image %></li>
+      <li>Sex: <%= @pet.sex %></li>
+      <li>Shelter: <%= link_to "#{@pet.shelter.name}", "/shelters/#{@pet.shelter.id}", class: "show-page-link" %></li>
+      <li>Adopted: <%= @pet.adopted %></li>
+    </ul>
+
+    <section class="btn-container">
+      <%= link_to "Edit", "#{@pet.id}/edit", class: "link-btn btn-left" %>
+      <%= button_to "Delete", "/pets/#{@pet.id}", method: :delete, class: "link-btn btn-right" %>
+    </section>
+    <%= link_to "All Pets", "/pets" %>
+  </section>
+</body>

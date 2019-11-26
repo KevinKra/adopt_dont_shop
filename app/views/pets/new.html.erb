@@ -1,24 +1,32 @@
-<h2>Create Pet</h2>
+<body class="page-template-1">
+  <h1>Create Pet</h1>
+  
+  <%= form_tag "/shelters/#{@shelter.id}/pets", method: :post, class: "card-template-1" do %>
+    <%= label_tag :name %>
+    <%= text_field_tag :name, nil, placeholder: "Enter a name..." %>
+  
+    <%= label_tag :image %>
+    <%= text_field_tag :image, nil, placeholder: "Enter a image..."%>
+  
+    <%= label_tag :age %>
+    <%= text_field_tag :age, nil, placeholder: "Enter a age..." %>
+  
+    <%= label_tag :description %>
+    <%= text_field_tag :description, nil, placeholder: "Enter a description..." %>
+  
+    <section class="radio-container">
+      <%= label_tag :sex %>
+      <div class="radio"><%= radio_button_tag :sex, "male" %> <p>Male</p></div>
+      <div class="radio"><%= radio_button_tag :sex, 'female' %> <p>Female</p></div>
+    </section>
+  
+    <section class="radio-container">
+      <%= label_tag :adopted %>
+      <div class="radio"><%= radio_button_tag :adopted, true %> <p>True</p></div>
+      <div class="radio"><%= radio_button_tag :adopted, false %> <p>False</p></div>
+    </section>
+  
 
-<%= form_tag "/shelters/#{@shelter.id}/pets", method: :post do %>
-  <%= label_tag :name %>
-  <%= text_field_tag :name %>
-
-  <%= label_tag :image %>
-  <%= text_field_tag :image%>
-
-  <%= label_tag :age %>
-  <%= text_field_tag :age %>
-
-  <%= label_tag :sex %>
-  <%= text_field_tag :sex %>
-
-  <%= label_tag :description %>
-  <%= text_field_tag :description %>
-
-  <%= label_tag :adopted %>
-  <%= text_field_tag :adopted %>
-
-
-  <%= submit_tag "Create Pet" %>
-<% end %>
+    <%= submit_tag "Create Pet", class: "link-btn" %>
+  <% end %>
+</body>

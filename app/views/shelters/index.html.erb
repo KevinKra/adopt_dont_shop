@@ -1,13 +1,15 @@
-<section class="page-template-1">
+<body class="page-template-1">
   <h1>Shelters</h1>
   <%= link_to "New Shelter", "/shelters/new" %>
-  <% @shelters.each do |shelter| %>
-    <article class="card-template-1">
-      <h2><%= shelter.name %></h2>
-    <section class="btn-container">
-      <%= link_to "Edit", "shelters/#{shelter.id}/edit", class: "link-btn btn-left"%>
-      <%= button_to 'Delete', "/shelters/#{shelter.id}", method: :delete, class: "link-btn btn-right" %>
-    </section>
-    </article>
-  <% end %>
-</section>
+  <section class="cards-container">
+    <% @shelters.each do |shelter| %>
+      <article class="card-template-1">
+        <h2><%= link_to "#{shelter.name}", "shelters/#{shelter.id}", class: "show-page-link"%></h2>
+      <section class="btn-container">
+        <%= link_to "Edit", "shelters/#{shelter.id}/edit", class: "link-btn btn-left"%>
+        <%= button_to 'Delete', "/shelters/#{shelter.id}", method: :delete, class: "link-btn btn-right" %>
+      </section>
+      </article>
+    <% end %>
+  </section>
+</body>
