@@ -82,5 +82,31 @@ RSpec.describe "As a visitor" do
       expect(page).to have_content(@pet_1.sex)
       expect(page).to_not have_content(@pet_3.name)
     end
+
+    it "will direct me to the add pets page" do
+      visit "/shelters/#{@shelter_1.id}/pets"
+      click_link "New Pet"
+      expect(current_path).to eq("/shelters/#{@shelter_1.id}/pets/new")
+    end
+  end
+
+  describe "I visit the add pet to a shelter page" do
+    it "I can add a pet to a given shelter's total pets" do
+
+      visit "/shelters/#{@shelter_1.id}/pets/new"
+
+      fill_in "Name", with: "Gregory"
+      fill_in "Image", with: "Image_of_greg.jpg"
+      fill_in "Age", with: 12
+      fill_in "Sex", with: "Male"
+      fill_in "Description", with: "A fantastic dog!"
+      fill_in "Adopted", with: "false"
+      click_on "Create Pet"
+
+      expect(current_path).to eq("/shelters/#{@shelter_1.id}/pets")
+      expect(page).to have_content("Gregory")
+      expect(page).to have_content("Image_of_greg.jpg")
+      expect(page).to_not have_content("A fantastic dog!")
+    end
   end
 end
