@@ -9,7 +9,7 @@ RSpec.describe "As a visitor" do
     @pet_3 = @shelter_2.animals.create!(name: "Orson", age: 13, adopted: false, sex: "female", description: "Thin and Poofy", image: "cde")
   end
 
-  describe "I visit the pets page" do
+  describe "I visit the pets index page" do
     it "then I see a listing of all the pets and their information" do
       visit "/pets"
       expect(page).to have_content(@pet_1.name)
@@ -18,6 +18,21 @@ RSpec.describe "As a visitor" do
       expect(page).to have_content(@pet_1.description)
       expect(page).to have_content(@pet_1.sex)
       expect(page).to have_content(@pet_1.shelter.name)
+    end
+
+    xit "I am able to edit any pet" do
+
+    end
+
+    it "I am able to delete any pet" do
+      visit "/pets"
+      first(".pet-card").click_on "delete"
+
+      expect(current_path).to eq("/pets")
+      expect(page).to_not have_content(@pet_1.name)
+      expect(page).to have_content(@pet_2.name)
+
+
     end
   end
 
