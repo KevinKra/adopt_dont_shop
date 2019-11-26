@@ -15,11 +15,6 @@ class SheltersController < ApplicationController
     show
   end
 
-  def pets 
-    show
-    @shelter_pets = Animal.where(shelter_id: @shelter.id)
-  end
-
   def patch
     show
     @shelter.update(
@@ -31,13 +26,20 @@ class SheltersController < ApplicationController
                   )
     redirect_to "/shelters/#{@shelter.id}"
   end
-
+  
   def delete
     show
     shelter = Shelter.find(@shelter.id)
     shelter.destroy
     redirect_to "/shelters"
   end
+  
+  def pets 
+    show
+    @shelter_pets = Animal.where(shelter_id: @shelter.id)
+  end
+
+
 
   def show
     @shelter = Shelter.find(params[:id])
