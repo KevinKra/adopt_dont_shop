@@ -1,10 +1,17 @@
-<h1>Pets</h1>
 
-<% @animals.each do |pet| %>
-  <h2><%= pet.name %></h2>
-  <h2><%= pet.age %></h2>
-  <h2><%= pet.image %></h2>
-  <h2><%= pet.description %></h2>
-  <h2><%= pet.sex %></h2>
-  <h2><%= pet.shelter.name %></h2>
-<% end %>
+<section class="page-template-1">
+  <h1>Pets</h1>
+  <% @animals.each do |pet| %>
+    <article class="pet-card">
+      <h2><%= pet.name %></h2>
+      <ul>
+        <li>Age: <%= pet.age %></li>
+        <li>Image: <%= pet.image %></li>
+        <li>Description: <%= pet.description %></li>
+        <li>Sex: <%= pet.sex %></li>
+        <li>Name: <%= pet.shelter.name %></li>
+      </ul>
+      <%= link_to 'edit', "/pets/#{pet.id}/edit" %>
+    </article>
+  <% end %>
+<section>
