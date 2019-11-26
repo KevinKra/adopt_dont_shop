@@ -12,6 +12,7 @@
         <li>Name: <%= pet.shelter.name %></li>
       </ul>
       <%= link_to 'edit', "/pets/#{pet.id}/edit" %>
+      <%= button_to 'delete', "/pets/#{pet.id}", method: :delete%>
     </article>
   <% end %>
 <section>
