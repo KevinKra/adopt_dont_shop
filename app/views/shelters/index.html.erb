@@ -4,7 +4,10 @@
   <% @shelters.each do |shelter| %>
     <article class="card-template-1">
       <h2><%= shelter.name %></h2>
-      <%= link_to "Edit", "shelters/#{shelter.id}/edit"%>
+    <section class="btn-container">
+      <%= link_to "Edit", "shelters/#{shelter.id}/edit", class: "link-btn btn-left"%>
+      <%= button_to 'Delete', "/shelters/#{shelter.id}", method: :delete, class: "link-btn btn-right" %>
+    </section>
     </article>
   <% end %>
 </section>

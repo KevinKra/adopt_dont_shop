@@ -11,7 +11,7 @@
     
     <section class="btn-container">
       <%= link_to "Edit", "#{@shelter.id}/edit", class: "link-btn btn-left" %>
-      <%= link_to "Delete", "#{@shelter.id}/delete", class: "link-btn btn-right" %>
+      <%= button_to "Delete", "/shelters/#{@shelter.id}", method: :delete, class: "link-btn btn-right" %>
     </section>
     <%= link_to "Home", "/shelters" %>
   <section>
