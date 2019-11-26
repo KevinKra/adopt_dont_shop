@@ -38,13 +38,22 @@ RSpec.describe "As a visitor" do
       expect(page).to have_content(@pet_2.name)
     end
 
-    it "I am able to click the link to their respective shelter" do 
+    it "I am able to click the shelter and link to their respective shelter show page" do 
       visit "/pets"
       first(".card-template-1").click_link(@shelter_1.name)
 
       expect(current_path).to eq("/shelters/#{@shelter_1.id}")
       expect(page).to_not have_content(@shelter_2.name)
       expect(page).to have_content(@shelter_1.name)
+    end
+
+    it "I am able to click the pet's name and link to their respective show page" do 
+      visit "/pets"
+      first(".card-template-1").click_link(@pet_1.name)
+
+      expect(current_path).to eq("/pets/#{@pet_1.id}")
+      expect(page).to_not have_content(@pet_2.name)
+      expect(page).to have_content(@pet_1.name)
     end
   end
 
