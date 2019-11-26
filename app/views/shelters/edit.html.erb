@@ -1,20 +1,36 @@
-<h2>Edit Shelter</h2>
+<body class="page-template-1">
+  <h1>Edit Shelter</h1>
+  
+  <section class="card-template-1">
+    <h3>Current Information</h3>
+    <ul class="unordered-list">
+      <li>Name: <%= @shelter.name %></li>
+      <li>Address: <%= @shelter.address %></li>
+      <li>City: <%= @shelter.city %></li>
+      <li>State: <%= @shelter.state %></li>
+      <li>Zip Code: <%= @shelter.zip %></li>
+    </ul>
+  </section>
 
-<%= form_tag "/shelters/#{@shelter.id}", method: :patch do %>
-  <%= label_tag :name %>
-  <%= text_field_tag :name %>
+  <%= form_tag "/shelters/#{@shelter.id}", method: :patch, :class => "card-template-1" do %>
+    <h3>Update Content</h3>
+    <%= label_tag :name %>
+    <%= text_field_tag :name, nil, placeholder: "New name..." %>
+  
+    <%= label_tag :address %>
+    <%= text_field_tag :address, nil, placeholder: "New address..." %>
+  
+    <%= label_tag :city %>
+    <%= text_field_tag :city, nil, placeholder: "New city..." %>
+  
+    <%= label_tag :state %>
+    <%= text_field_tag :state, nil, placeholder: "New state..." %>
+  
+    <%= label_tag :zip %>
+    <%= text_field_tag :zip, nil, placeholder: "New zip..." %>
+  
+    <%= submit_tag "Update Shelter", :class => "form-btn" %>
 
-  <%= label_tag :address %>
-  <%= text_field_tag :address%>
-
-  <%= label_tag :city %>
-  <%= text_field_tag :city %>
-
-  <%= label_tag :state %>
-  <%= text_field_tag :state %>
-
-  <%= label_tag :zip %>
-  <%= text_field_tag :zip %>
-
-  <%= submit_tag "Update Shelter" %>
-<% end %>
+    <%= link_to "Home", "/shelters" %>
+  <% end %>
+</body>

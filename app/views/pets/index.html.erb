@@ -1,5 +1,5 @@
 
-<section class="page-template-1">
+<body class="page-template-1">
   <h1>Pets</h1>
   <% @animals.each do |pet| %>
     <article class="pet-card">
@@ -15,4 +15,4 @@
       <%= button_to 'delete', "/pets/#{pet.id}", method: :delete%>
     </article>
   <% end %>
-<section>
+<body>

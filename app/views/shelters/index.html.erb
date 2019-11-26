@@ -1,7 +1,10 @@
-<h1>Shelters</h1>
-
-<%= link_to "New Shelter", "/shelters/new" %>
-
-<% @shelters.each do |shelter| %>
-  <h2><%= shelter.name %></h2>
-<% end %>
+<section class="page-template-1">
+  <h1>Shelters</h1>
+  <%= link_to "New Shelter", "/shelters/new" %>
+  <% @shelters.each do |shelter| %>
+    <article class="card-template-1">
+      <h2><%= shelter.name %></h2>
+      <%= link_to "Edit", "shelters/#{shelter.id}/edit"%>
+    </article>
+  <% end %>
+</section>
