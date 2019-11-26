@@ -34,6 +34,12 @@ class PetsController < ApplicationController
     redirect_to "/pets"
   end
 
+  def delete
+    show
+    @pet.delete
+    redirect_to "/pets"
+  end
+
     private
     def animal_params
       params.permit(:name, :age, :image, :description, :sex, :adopted)
