@@ -1,0 +1,18 @@
+
+<section class="page-template-1">
+  <h1>Pets</h1>
+  <% @animals.each do |pet| %>
+    <article class="pet-card">
+      <h2><%= pet.name %></h2>
+      <ul>
+        <li>Age: <%= pet.age %></li>
+        <li>Image: <%= pet.image %></li>
+        <li>Description: <%= pet.description %></li>
+        <li>Sex: <%= pet.sex %></li>
+        <li>Name: <%= pet.shelter.name %></li>
+      </ul>
+      <%= link_to 'edit', "/pets/#{pet.id}/edit" %>
+      <%= button_to 'delete', "/pets/#{pet.id}", method: :delete%>
+    </article>
+  <% end %>
+<section>

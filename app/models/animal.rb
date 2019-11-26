@@ -1,6 +1,6 @@
 class Animal < ApplicationRecord
   belongs_to :shelter
-  validates_presence_of :name, :age
+  validates_presence_of :name, :age, :description, :image, :sex
   validates_inclusion_of :adopted, :in => [true, false]
   # shoulda matcher
   def self.animal_count
