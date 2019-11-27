@@ -129,8 +129,11 @@ RSpec.describe "As a visitor" do
       expect(page).to have_content("Azimoth")
     end
 
-    xit "and it will allow me to delete any pet" do
-
+    it "and it will allow me to delete any pet" do
+      visit "/shelters/#{@shelter_1.id}/pets"
+      first(".card-template-1").click_button "delete"
+      expect(current_path).to eq("/pets")
+      expect(page).to_not have_content(@pet_1.name)
     end
 
     it "and it will direct me to the add pets page" do
