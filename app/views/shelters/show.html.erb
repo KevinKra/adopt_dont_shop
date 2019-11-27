@@ -1,10 +1,22 @@
-<h2><%= @shelter.name %></h2>
-<p>Address: <%= @shelter.address %></p>
-<p>City: <%= @shelter.city %>
-<p>State: <%= @shelter.state %>
-<p>Zip Code: <%= @shelter.zip %>
+<body class="page-template-1">
+  <h1>Shelter Overview</h1>
+  <section class="card-template-1">
+    <h2><%= @shelter.name %></h2>
+    <ul class="unordered-list">
+      <li>Address: <%= @shelter.address %></li>
+      <li>City: <%= @shelter.city %></li>
+      <li>State: <%= @shelter.state %></li>
+      <li>Zip Code: <%= @shelter.zip %></li>
+    </ul>
+    
+    <section class="btn-container">
+      <%= link_to "Edit", "#{@shelter.id}/edit", class: "link-btn btn-left" %>
+      <%= button_to "Delete", "/shelters/#{@shelter.id}", method: :delete, class: "link-btn btn-right" %>
+    </section>
+    <section class="btn-container">
+      <%= link_to "View Pets", "#{@shelter.id}/pets", class: "link-btn" %>
+    </section>
 
-<h4>Edit this shelter</h4>
-
-<%= link_to "Edit", "#{@shelter.id}/edit" %>
-<%= link_to "Delete", "#{@shelter.id}/delete" %>
+    <%= link_to "Home", "/shelters" %>
+  <section>
+</body>

@@ -1,8 +1,60 @@
+/* General */
+html {
+  min-height: 100vh;
+}
+
 body {
   margin: 0;
   padding: 0;
 }
 
+h1 {
+  font-size: 24px;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+/* NavBar */
+.main-navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 2.5rem;
+  background-color: rgb(20, 20, 20);
+}
+
+.main-navbar > a {
+  text-decoration: none;
+  min-width: 6rem;
+  text-align: center;
+  margin: 0 1rem;
+  color: black;
+  background-color: white;
+  border-radius: 2px;
+}
+
+/* Page templates */
 .page-template-1 {
   display: flex;
   flex-direction: column;
@@ -10,30 +62,129 @@ body {
   min-height: 100vh;
 }
 
-.pet-card {
+/* Card templates */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
+  width: 95%;
+}
+
+.card-template-1 {
   display: flex;
   flex-direction: column;
   min-width: 300px;
   max-width: 500px;
   margin: 0.5rem;
-  padding: 0.5rem;
-  border: 1px solid lightgray;
+  padding: 1rem;
+  border: 1px solid rgb(172, 172, 172);
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px rgb(150, 150, 150);
+}
+
+.card-template-1 > .form-btn {
+  margin-top: 1rem;
+}
+
+.card-template-1 > input {
+  font-size: 1rem;
+  margin-top: 0.2rem;
+  padding: 0.1rem;
+}
+
+.card-template-1 > input::placeholder {
+  font-size: 14px;
+  color: rgb(172, 172, 172);
+}
+
+.card-template-1 > label {
+  font-size: 1rem;
+  margin-top: 0.6rem;
+  padding-left: 0.1rem;
+}
+
+.card-template-1 > .link-btn {
+  margin-top: 1rem;
+  font-size: 14px;
+}
+
+.card-template-1 > h3,
+h2 {
+  text-align: left;
+  margin: 0.4rem 0;
+}
+
+.card-template-1 > a {
+  margin-top: 1rem;
+}
+
+.form-btn:hover {
+  cursor: pointer;
+}
+
+.unordered-list > li {
+  margin-top: 0.5rem;
+}
+
+/* button management */
+
+.btn-container {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.show-page-link {
+  text-decoration: underline;
+  color: black;
+}
+
+.show-page-link:hover {
+  text-decoration: underline;
+}
+
+.link-btn {
+  flex-grow: 1;
+  text-decoration: none;
+  color: black;
+  border: 1px solid lightgrey;
+  border-bottom: 2px solid lightgray;
+  font-size: 14px;
+  text-align: center;
+  padding: 0.1rem 0.5rem;
   border-radius: 4px;
-  box-shadow: 1px 1px 3px darkgrey;
+  font-family: "Open Sans", sans-serif;
 }
 
-.pet-card > a {
-  color: red;
+.link-btn:hover {
+  cursor: pointer;
 }
 
-.pet-card > h2 {
+.btn-left {
+  margin-right: 0.2rem;
+}
+.btn-right {
+  margin-left: 0.2rem;
+}
+
+/* radio  */
+
+.radio-container {
+  margin-top: 1rem;
+  border: 1px solid lightgrey;
+  padding: 0.5rem;
+}
+
+.radio-container > label {
+  color: rgb(27, 27, 27);
+}
+
+.radio {
+  display: flex;
+  margin-top: 0.3rem;
+}
+
+.radio > p {
   margin: 0;
-}
-
-ul {
-  padding: 0;
-}
-
-li {
-  list-style-type: none;
+  padding-left: 0.2rem;
 }

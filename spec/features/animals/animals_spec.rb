@@ -20,19 +20,40 @@ RSpec.describe "As a visitor" do
       expect(page).to have_content(@pet_1.shelter.name)
     end
 
-    xit "I am able to edit any pet" do
+    it "I am able to edit any pet" do
+      visit "/pets"
+      first(".card-template-1").click_on "edit"
 
+      expect(current_path).to eq("/pets/#{@pet_1.id}/edit")
+      expect(page).to_not have_content(@pet_2.name)
+      expect(page).to have_content(@pet_1.name)
     end
 
     it "I am able to delete any pet" do
       visit "/pets"
-      first(".pet-card").click_on "delete"
+      first(".card-template-1").click_on "delete"
 
       expect(current_path).to eq("/pets")
       expect(page).to_not have_content(@pet_1.name)
       expect(page).to have_content(@pet_2.name)
+    end
 
+    it "I am able to click the shelter and link to their respective shelter show page" do 
+      visit "/pets"
+      first(".card-template-1").click_link(@shelter_1.name)
 
+      expect(current_path).to eq("/shelters/#{@shelter_1.id}")
+      expect(page).to_not have_content(@shelter_2.name)
+      expect(page).to have_content(@shelter_1.name)
+    end
+
+    it "I am able to click the pet's name and link to their respective show page" do 
+      visit "/pets"
+      first(".card-template-1").click_link(@pet_1.name)
+
+      expect(current_path).to eq("/pets/#{@pet_1.id}")
+      expect(page).to_not have_content(@pet_2.name)
+      expect(page).to have_content(@pet_1.name)
     end
   end
 
@@ -45,6 +66,15 @@ RSpec.describe "As a visitor" do
       expect(page).to have_content(@pet_1.description)
       expect(page).to have_content(@pet_1.sex)
       expect(page).to have_content(@pet_1.adopted)
+    end
+
+    it "I am able to click the link to their respective shelter" do 
+      visit "/pets/#{@pet_1.id}/edit"
+      first(".card-template-1").click_link(@shelter_1.name)
+
+      expect(current_path).to eq("/shelters/#{@shelter_1.id}")
+      expect(page).to_not have_content(@shelter_2.name)
+      expect(page).to have_content(@shelter_1.name)
     end
   end
 end

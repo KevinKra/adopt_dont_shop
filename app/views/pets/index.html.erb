@@ -1,18 +1,22 @@
 
-<section class="page-template-1">
+<body class="page-template-1">
   <h1>Pets</h1>
-  <% @animals.each do |pet| %>
-    <article class="pet-card">
-      <h2><%= pet.name %></h2>
-      <ul>
-        <li>Age: <%= pet.age %></li>
-        <li>Image: <%= pet.image %></li>
-        <li>Description: <%= pet.description %></li>
-        <li>Sex: <%= pet.sex %></li>
-        <li>Name: <%= pet.shelter.name %></li>
-      </ul>
-      <%= link_to 'edit', "/pets/#{pet.id}/edit" %>
-      <%= button_to 'delete', "/pets/#{pet.id}", method: :delete%>
-    </article>
-  <% end %>
-<section>
+  <section class="cards-container">
+    <% @animals.each do |pet| %>
+      <article class="card-template-1">
+        <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}", class: "show-page-link" %></h2>
+        <ul>
+          <li>Age: <%= pet.age %></li>
+          <li>Image: <%= pet.image %></li>
+          <li>Description: <%= pet.description %></li>
+          <li>Sex: <%= pet.sex %></li>
+          <li>Shelter: <%= link_to "#{pet.shelter.name}", "/shelters/#{pet.shelter.id}", class: "show-page-link" %></li>
+        </ul>
+        <section class="btn-container">
+          <%= link_to 'edit', "/pets/#{pet.id}/edit", class: "link-btn btn-left" %>
+          <%= button_to 'delete', "/pets/#{pet.id}", method: :delete, class: "link-btn btn-right"%>
+        </section>
+      </article>
+    <% end %>
+  </section>
+<body>

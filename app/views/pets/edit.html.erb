@@ -1,23 +1,45 @@
-<h1>Pet Edit Page</h1>
+<body class="page-template-1">
+  <h1>Edit Pet</h1>
+  
+  <section class="card-template-1">
+    <h3>Current Information</h3>
+    <ul class="unordered-list">
+      <li>Name: <%= @pet.name %></li>
+      <li>Image: <%= @pet.image %></li>
+      <li>Age: <%= @pet.age %></li>
+      <li>Sex: <%= @pet.sex %></li>
+      <li>Description: <%= @pet.description %></li>
+      <li>Shelter: <%= link_to "#{@pet.shelter.name}", "/shelters/#{@pet.shelter.id}", class:"show-page-link" %></li>
+      <li>Adopted: <%= @pet.adopted %></li>
+    </ul>
+  </section>
+  
+  <%= form_tag "/pets/#{@pet.id}", method: :patch, class: "card-template-1" do %>
+    <%= label_tag :name %>
+    <%= text_field_tag :name, nil, placeholder: "Enter name..." %>
+  
+    <%= label_tag :image %>
+    <%= text_field_tag :image, nil, placeholder: "Enter image..." %>
+  
+    <%= label_tag :age %>
+    <%= text_field_tag :age, nil, placeholder: "Enter age..." %>
 
-<%= form_tag "/pets/#{@pet.id}", method: :patch do %>
-  <%= label_tag :name %>
-  <%= text_field_tag :name %>
-
-  <%= label_tag :image %>
-  <%= text_field_tag :image%>
-
-  <%= label_tag :age %>
-  <%= text_field_tag :age %>
-
-  <%= label_tag :sex %>
-  <%= text_field_tag :sex %>
-
-  <%= label_tag :description %>
-  <%= text_field_tag :description %>
-
-  <%= label_tag :adopted %>
-  <%= text_field_tag :adopted %>
-
-  <%= submit_tag "Update" %>
-<% end %>
+    <%= label_tag :description %>
+    <%= text_field_tag :description, nil, placeholder: "Enter description..." %>
+  
+    <section class="radio-container">
+      <%= label_tag :sex %>
+      <div class="radio"><%= radio_button_tag :sex, 'male' %> <p>Male</p></div>
+      <div class="radio"><%= radio_button_tag :sex, 'female' %> <p>Female</p></div>
+    </section>
+  
+    <section class="radio-container">
+      <%= label_tag :adopted %>
+      <div class="radio"><%= radio_button_tag :adopted, true %> <p>True</p></div>
+      <div class="radio"><%= radio_button_tag :adopted, false %> <p>False</p></div>
+    </section>
+  
+    <%= submit_tag "Update", class: "link-btn"%>
+    <%= link_to "All Pets", "/pets" %>
+  <% end %>
+</body>

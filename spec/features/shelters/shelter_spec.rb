@@ -9,6 +9,21 @@ RSpec.describe "As a visitor" do
     @pet_3 = @shelter_2.animals.create!(name: "Orson", age: 13, adopted: false, sex: "female", description: "Thin and Poofy", image: "cde")
   end
 
+  describe "I visit the shelter's index page" do
+    it "it will display all the available shelter locations" do
+      visit "/shelters"
+
+      expect(page).to have_content(@shelter_1.name)
+      expect(page).to have_content(@shelter_2.name)
+    end
+
+    it "it will redirect me to the edit page when I click the edit link" do
+      visit "/shelters"
+      first(".card-template-1").click_link "Edit"
+      expect(current_path).to eq("/shelters/#{@shelter_1.id}/edit")
+    end
+  end
+
   describe "I visit a shelter's show page" do
     it "then I see only the shelter's animal listing" do
 
@@ -17,6 +32,13 @@ RSpec.describe "As a visitor" do
       expect(page).to have_content(@shelter_1.name)
       expect(page).to have_content(@shelter_1.address)
       expect(page).to_not have_content(@shelter_2.name)
+    end
+
+    it "then I can click a link to see all of that shelter's pets" do
+      visit "/shelters/#{@shelter_1.id}"
+
+      click_link "View Pets"
+
     end
   end
 
@@ -63,11 +85,17 @@ RSpec.describe "As a visitor" do
       expect(page).to have_content(123123)
     end
 
+    it "I can return to the shelters index page" do 
+      visit "/shelters/#{@shelter_1.id}/edit"
+      click_link "Home"
+      expect(current_path).to eq("/shelters")
+    end
+
     it "I can delete the previously matched shelter" do
       visit "/shelters/#{@shelter_1.id}"
       expect(Shelter.shelter_count).to eq(2)
       expect(current_path).to eq("/shelters/#{@shelter_1.id}")
-      click_link "Delete"
+      click_button "Delete"
       expect(current_path).to eq("/shelters")
       expect(Shelter.shelter_count).to eq(1)
     end
@@ -85,15 +113,15 @@ RSpec.describe "As a visitor" do
 
     it "and it will allow me to edit any pet" do
       visit "/shelters/#{@shelter_1.id}/pets"
-      first(".pet-info").click_link "Edit"
+      first(".card-template-1").click_link "Edit"
       expect(current_path).to eq("/pets/#{@pet_1.id}/edit")
 
       fill_in "Name", with: "Azimoth"
       fill_in "image", with: "my_new_image.jpg"
       fill_in "age", with: 33
-      fill_in "sex", with: "male"
+      page.choose('sex_male')
       fill_in "description", with: "A strong but old dog"
-      fill_in "adopted", with: "false"
+      page.choose('adopted_false')
       click_on "Update"
 
       expect(current_path).to eq("/pets")
@@ -101,8 +129,11 @@ RSpec.describe "As a visitor" do
       expect(page).to have_content("Azimoth")
     end
 
-    xit "and it will allow me to delete any pet" do
-
+    it "and it will allow me to delete any pet" do
+      visit "/shelters/#{@shelter_1.id}/pets"
+      first(".card-template-1").click_button "delete"
+      expect(current_path).to eq("/pets")
+      expect(page).to_not have_content(@pet_1.name)
     end
 
     it "and it will direct me to the add pets page" do
@@ -120,9 +151,9 @@ RSpec.describe "As a visitor" do
       fill_in "Name", with: "Gregory"
       fill_in "Image", with: "Image_of_greg.jpg"
       fill_in "Age", with: 12
-      fill_in "Sex", with: "Male"
+      page.choose('sex_male')
       fill_in "Description", with: "A fantastic dog!"
-      fill_in "Adopted", with: "false"
+      page.choose('adopted_false')
       click_on "Create Pet"
 
       expect(current_path).to eq("/shelters/#{@shelter_1.id}/pets")
