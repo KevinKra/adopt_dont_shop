@@ -1,5 +1,4 @@
 /* General */
-
 html {
   min-height: 100vh;
 }
@@ -136,7 +135,7 @@ h2 {
 }
 
 .show-page-link {
-  text-decoration: none;
+  text-decoration: underline;
   color: black;
 }
 
