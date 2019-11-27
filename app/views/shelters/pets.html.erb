@@ -1,17 +1,22 @@
 <body class="page-template-1">
-  <h1>Shelter Pets Page</h1>
+  <h1><%= "#{@shelter.name}" %>'s Pets</h1>
   
   <%= link_to 'New Pet', "/shelters/#{@shelter.id}/pets/new" %>
-  <% @shelter_pets.each do |pet| %>
-    <article class="card-template-1">
-      <h2><%= pet.name %></h2>
-    <ul class="unordered-list">
-      <li>Image: <%= pet.image %></li>
-      <li>Age: <%= pet.age %></li>
-      <li>Sex: <%= pet.sex %></li>
-      <li>Adopted: <%= pet.adopted %></li>
-    </ul>
-      <%= link_to 'Edit', "/pets/#{pet.id}/edit", class: "link-btn"%>
-    </article>
-  <% end %>
+  <section class="cards-container">
+    <% @shelter_pets.each do |pet| %>
+      <article class="card-template-1">
+        <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}", class: "show-page-link"%></h2>
+        <ul class="unordered-list">
+          <li>Image: <%= pet.image %></li>
+          <li>Age: <%= pet.age %></li>
+          <li>Sex: <%= pet.sex %></li>
+          <li>Adopted: <%= pet.adopted %></li>
+        </ul>
+        <section class="btn-container">
+          <%= link_to 'Edit', "/pets/#{pet.id}/edit", class: "link-btn"%>
+          <%= button_to 'delete', "/pets/#{pet.id}", method: :delete, class: "link-btn btn-right"%>
+        </section>
+      </article>
+    <% end %>
+  </section>
 </body>
